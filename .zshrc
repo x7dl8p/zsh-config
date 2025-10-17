@@ -48,6 +48,9 @@ esac
 export ANDROID_SDK_ROOT=/usr/lib/android-sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools
 
+# --- NODE_OPTIONS ---
+export NODE_OPTIONS="--max-old-space-size=4096"
+
 # --- ALIASES ---
 alias ls='ls -1h'
 alias lss='du -sh --apparent-size -- * | sort -h'
@@ -100,3 +103,9 @@ alias findd='finddir'
 findenv() {
   find . -type f -name ".env" ! -path "*/node_modules/*" ! -path "*/cache/*"
 }
+
+# Open new terminal in home directory
+alias gt='gnome-terminal --working-directory=$HOME &'
+
+# Open new terminal in current directory
+alias gtdir='gnome-terminal --working-directory="$PWD" &'
