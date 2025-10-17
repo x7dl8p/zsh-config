@@ -108,4 +108,15 @@ findenv() {
 alias gt='gnome-terminal --working-directory=$HOME &'
 
 # Open new terminal in current directory
-alias gtdir='gnome-terminal --working-directory="$PWD" &'
+alias gtdir='gnome-terminal'
+
+# --- GIT: simple undo last push ---
+gu() {
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Not a git."
+    return 1
+  fi
+
+  echo "Undoing last commit (local+remote)"
+  git reset --hard HEAD^ && git push origin +main
+}
